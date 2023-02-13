@@ -1,7 +1,21 @@
 /**
- * # Terraform AWS Security Group Module
+ * # Terraform AWS IAM Role
  *
- * Terraform module which creates an IAM role.
+ * Introducing the AWS IAM Role Terraform Module, a highly efficient solution for creating and managing your AWS
+ * Identity and Access Management (IAM) roles. This module has been expertly crafted to provide you with a simple and
+ * streamlined way to create and manage your IAM roles within AWS.
+ *
+ * Our team of experts has years of experience working with AWS IAM and has a deep understanding of the best practices
+ * and configurations. By using this Terraform module, you can be sure that your IAM roles are created and managed in
+ * a secure, efficient, and scalable manner.
+ *
+ * This module offers a preconfigured solution for creating IAM roles, saving you time and effort in the process.
+ * Whether you're looking to grant access to specific AWS services or to limit the actions that can be performed on
+ * your resources, this module has you covered.
+ *
+ * So, if you're looking for a convenient and reliable solution for creating and managing your IAM roles within AWS,
+ * look no further than the AWS IAM Role Terraform Module. Give it a try and see the difference it can make in your
+ * AWS setup!
  */
 data "aws_iam_policy_document" "assume" {
   for_each = var.assume_roles
@@ -16,7 +30,10 @@ data "aws_iam_policy_document" "assume" {
     }
 
     dynamic "condition" {
-      for_each = { for cond in coalesce(each.value.conditions, []) : "${cond.variable}-${cond.test}" => cond }
+      for_each = {
+        for cond in coalesce(each.value.conditions, []) :
+        "${cond.variable}-${cond.test}" => cond
+      }
 
       content {
         test     = condition.value.test
