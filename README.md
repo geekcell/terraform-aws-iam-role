@@ -33,9 +33,23 @@
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-iam-role/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-iam-role&benchmark=HIPAA)
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-iam-role/fedramp_moderate)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-iam-role&benchmark=FEDRAMP+%28MODERATE%29)
 
-# Terraform AWS Security Group Module
+# Terraform AWS IAM Role
 
-Terraform module which creates an IAM role.
+Introducing the AWS IAM Role Terraform Module, a highly efficient solution for creating and managing your AWS
+Identity and Access Management (IAM) roles. This module has been expertly crafted to provide you with a simple and
+streamlined way to create and manage your IAM roles within AWS.
+
+Our team of experts has years of experience working with AWS IAM and has a deep understanding of the best practices
+and configurations. By using this Terraform module, you can be sure that your IAM roles are created and managed in
+a secure, efficient, and scalable manner.
+
+This module offers a preconfigured solution for creating IAM roles, saving you time and effort in the process.
+Whether you're looking to grant access to specific AWS services or to limit the actions that can be performed on
+your resources, this module has you covered.
+
+So, if you're looking for a convenient and reliable solution for creating and managing your IAM roles within AWS,
+look no further than the AWS IAM Role Terraform Module. Give it a try and see the difference it can make in your
+AWS setup!
 
 ## Inputs
 
@@ -69,11 +83,11 @@ Terraform module which creates an IAM role.
 
 ## Resources
 
-- resource.aws_iam_instance_profile.main (main.tf#60)
-- resource.aws_iam_role.main (main.tf#38)
-- resource.aws_iam_role_policy_attachment.main (main.tf#53)
-- data source.aws_iam_policy_document.assume (main.tf#6)
-- data source.aws_iam_policy_document.assume_combined (main.tf#30)
+- resource.aws_iam_instance_profile.main (main.tf#77)
+- resource.aws_iam_role.main (main.tf#55)
+- resource.aws_iam_role_policy_attachment.main (main.tf#70)
+- data source.aws_iam_policy_document.assume (main.tf#20)
+- data source.aws_iam_policy_document.assume_combined (main.tf#47)
 
 # Examples
 ### Minimal
