@@ -92,10 +92,18 @@ AWS setup!
 # Examples
 ### Minimal
 ```hcl
-module "minimal" {
+module "basic-example" {
   source = "../../"
 
-  name = "example"
+  name = var.name
+
+  assume_roles = {
+    AWS : {
+      identifiers : [var.account]
+    }
+  }
+
+  policy_arns = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
 }
 ```
 <!-- END_TF_DOCS -->
