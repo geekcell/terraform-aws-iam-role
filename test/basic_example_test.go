@@ -36,12 +36,13 @@ type Policy struct {
 func TestTerraformBasicExample(t *testing.T) {
 	roleName := "terraform-test-iam-role-" + GetShortId()
 	accountId := os.Getenv("AWS_TESTING_ACCOUNT_ID")
+	account := fmt.Sprintf("arn:aws:iam::%s:root", accountId)
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: "../examples/basic-example",
 		Vars: map[string]interface{}{
 			"name":    roleName,
-			"account": fmt.Sprintf("arn:aws:iam::%s:root", accountId),
+			"account": account,
 		},
 	})
 
@@ -81,7 +82,7 @@ func TestTerraformBasicExample(t *testing.T) {
 	assert.Equal(t, "", policy.Statement[0].Sid)
 	assert.Equal(t, "Allow", policy.Statement[0].Effect)
 	assert.Equal(t, "sts:AssumeRole", policy.Statement[0].Action)
-	assert.Equal(t, os.Getenv("AWS_TESTING_ACCOUNT"), policy.Statement[0].Principal.AWS)
+	assert.Equal(t, account, policy.Statement[0].Principal.AWS)
 }
 
 func FilterRoles(t *testing.T, name string, roles []*iam.Role) *iam.Role {
