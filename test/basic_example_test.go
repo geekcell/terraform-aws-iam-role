@@ -2,6 +2,7 @@ package test
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/url"
 	"os"
 	"testing"
@@ -34,12 +35,13 @@ type Policy struct {
 
 func TestTerraformBasicExample(t *testing.T) {
 	roleName := "terraform-test-iam-role-" + GetShortId()
+	accountId := os.Getenv("AWS_TESTING_ACCOUNT_ID")
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: "../examples/basic-example",
 		Vars: map[string]interface{}{
 			"name":    roleName,
-			"account": os.Getenv("AWS_TESTING_ACCOUNT"),
+			"account": fmt.Sprintf("arn:aws:iam::%s:root", accountId),
 		},
 	})
 
