@@ -4,8 +4,8 @@ module "basic-example" {
   name = var.name
 
   assume_roles = {
-    AWS: {
-      identifiers: [var.account]
+    AWS : {
+      identifiers : [var.account]
     }
   }
 
