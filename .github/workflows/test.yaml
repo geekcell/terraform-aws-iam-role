@@ -18,6 +18,8 @@ jobs:
   test:
     name: Terraform Tests
     runs-on: ubuntu-latest
+    env:
+      AWS_REGION: ${{ vars.AWS_TESTING_REGION }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
