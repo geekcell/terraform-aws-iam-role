@@ -74,6 +74,7 @@ AWS setup!
 | Name | Description |
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | IAM role arn |
+| <a name="output_instance_profile_arn"></a> [instance\_profile\_arn](#output\_instance\_profile\_arn) | IAM instance profile arn |
 | <a name="output_name"></a> [name](#output\_name) | IAM role name |
 
 ## Providers
